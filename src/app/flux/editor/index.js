@@ -1067,7 +1067,7 @@ export const actions = {
      */
     generateViewPath: (headType) => (dispatch, getState) => {
         const modelInfos = [];
-        const { modelGroup, toolPathModelGroup, materials } = getState()[headType];
+        const { modelGroup, toolPathModelGroup, materials, toolParams } = getState()[headType];
 
         for (const model of modelGroup.getModels()) {
             if (model.hideFlag) continue;
@@ -1077,7 +1077,8 @@ export const actions = {
                 const taskInfo = {
                     ...modelTaskInfo,
                     ...toolPathModelTaskInfo,
-                    materials
+                    materials,
+                    toolParams
                 };
                 modelInfos.push(taskInfo);
             }

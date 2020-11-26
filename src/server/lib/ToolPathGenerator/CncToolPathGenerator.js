@@ -393,12 +393,10 @@ export default class CNCToolPathGenerator extends EventEmitter {
     }
 
     _generateViewPathObj(svg, modelInfo) {
-        const { sourceType, mode, transformation, gcodeConfig } = modelInfo;
+        const { sourceType, mode, transformation, gcodeConfig, toolParams } = modelInfo;
 
-        const {
-            toolAngle, toolShaftDiameter,
-            targetDepth
-        } = gcodeConfig;
+        const { targetDepth } = gcodeConfig;
+        const { toolAngle, toolShaftDiameter } = toolParams;
 
         const { positionX, positionY, positionZ } = transformation;
 
@@ -521,13 +519,11 @@ export default class CNCToolPathGenerator extends EventEmitter {
     }
 
     _generateRotateViewPath(svg, modelInfo) {
-        const { sourceType, mode, transformation, gcodeConfig, materials } = modelInfo;
+        const { sourceType, mode, transformation, gcodeConfig, materials, toolParams } = modelInfo;
         const { isRotate, diameter } = materials;
 
-        const {
-            toolAngle, toolShaftDiameter,
-            targetDepth
-        } = gcodeConfig;
+        const { targetDepth } = gcodeConfig;
+        const { toolAngle, toolShaftDiameter } = toolParams;
 
         const density = 10;
 
